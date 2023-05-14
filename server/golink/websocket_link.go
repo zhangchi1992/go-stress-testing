@@ -77,7 +77,7 @@ func webSocketRequest(chanID uint64, ch chan<- *model.RequestResults, i uint64, 
 	)
 	// 需要发送的数据
 	seq := fmt.Sprintf("%d_%d", chanID, i)
-	err := ws.Write([]byte(`{"seq":"` + seq + `","cmd":"ping","data":{}}`))
+  err := ws.Write([]byte(`{"version":"1.0","clientId":"f27d9d05-f610-485d-bd0f-6e2626ec98cf","payloadType":"HeartbeatRequest","payload":{"heartbeatRequest":{"requestTimestamp":1680290242689}}}`))
 	if err != nil {
 		errCode = model.RequestErr // 请求错误
 	} else {
